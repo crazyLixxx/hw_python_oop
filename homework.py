@@ -15,9 +15,16 @@ class Training:
         self.duration = duration,
         self.weight = weight
 
+    LEN_STEP = len_step(type_of_training)
+        if types_of_trainings == Swimming:
+            return action * 1.38
+        else:
+            return action * 0.65
+
+    M_IN_KM = 1000
+
     def get_distance(self, ) -> float:
-        """Получить дистанцию в км."""
-        if 
+        return action * LEN_STEP / M_IN_KM
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
@@ -39,7 +46,24 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
-    pass
+    def __init__(self,
+                 action: int,
+                 duration: float,
+                 weight: float,
+                 length_pool: float,
+                 count_pool: int,
+                 ) -> None:
+        super().__init__(action, duration, weight)
+        self.lenght_pool = length_pool
+        self.count_pool = count_pool
+    
+    def get_mean_speed(self) -> float:
+        """Получить среднюю скорость движения."""
+        return length_pool * count_pool / M_IN_KM / duration
+    
+    def get_spent_calories(self) -> float:
+        """Получить количество затраченных калорий."""
+        return (self.get_mean_speed + 1.1) * 2 *  weight
 
 
 class Swimming(Training):
@@ -49,11 +73,17 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    type_of_trainings{
+    types_of_trainings{
         'SWM': Swimming,
         'RUN': Running,
         'WLK': SportsWalking
     }
+
+    if workout_type == 'SWM'
+        return type_of_trainings[workout_type](action = data[1], )
+    
+    
+    
     return type_of_trainings[workout_type](data)
 
 

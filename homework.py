@@ -11,11 +11,13 @@ class Training:
                  duration: float,
                  weight: float,
                  ) -> None:
-        pass
+        self.action = action,
+        self.duration = duration,
+        self.weight = weight
 
-    def get_distance(self) -> float:
+    def get_distance(self, ) -> float:
         """Получить дистанцию в км."""
-        pass
+        if 
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
@@ -47,13 +49,17 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    pass
+    type_of_trainings{
+        'SWM': Swimming,
+        'RUN': Running,
+        'WLK': SportsWalking
+    }
+    return type_of_trainings[workout_type](data)
 
 
 def main(training: Training) -> None:
     """Главная функция."""
-    pass
-
+    show_training_info(Training)
 
 if __name__ == '__main__':
     packages = [

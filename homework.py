@@ -15,10 +15,22 @@ class Training:
         self.duration = duration,
         self.weight = weight
 
+<<<<<<< HEAD
     LEN_STEP = 0.65
     M_IN_KM = 1000
 
     def get_distance(self, action) -> float:
+=======
+    LEN_STEP = len_step(type_of_training)
+        if types_of_trainings == Swimming:
+            return action * 1.38
+        else:
+            return action * 0.65
+
+    M_IN_KM = 1000
+
+    def get_distance(self, ) -> float:
+>>>>>>> ae6bcd79c39a458b2ca053208cf76a19f654cb92
         return action * LEN_STEP / M_IN_KM
 
     def get_mean_speed(self) -> float:
@@ -52,8 +64,11 @@ class SportsWalking(Training):
         self.lenght_pool = length_pool
         self.count_pool = count_pool
     
+<<<<<<< HEAD
     LEN_STEP = 1.36   
 
+=======
+>>>>>>> ae6bcd79c39a458b2ca053208cf76a19f654cb92
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
         return length_pool * count_pool / M_IN_KM / duration

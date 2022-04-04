@@ -8,10 +8,10 @@ class InfoMessage:
                  speed = float,
                  calories = float
                  ) -> None:
-        self.training_type = training_type,
-        self.duration = duration,
-        self.distance = distance,
-        self.speed = speed,
+        self.training_type = training_type
+        self.duration = duration
+        self.distance = distance
+        self.speed = speed
         self.calories = calories
 
     def get_massage(self) -> str:
@@ -32,12 +32,12 @@ class Training:
                  duration: float,
                  weight: float
                  ) -> None:
-        self.action = action,
-        self.duration = duration,
+        self.action = action
+        self.duration = duration
         self.weight = weight
 
-    LEN_STEP = 0.65
-    M_IN_KM = 1000
+    LEN_STEP:float = 0.65
+    M_IN_KM:int = 1000
 
     def get_distance(self) -> float:
         """Получить расстояние."""
@@ -45,7 +45,7 @@ class Training:
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        return self.get_distance / self.duration
+        return self.get_distance() / self.duration
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
@@ -55,9 +55,9 @@ class Training:
         """Вернуть информационное сообщение о выполненной тренировке."""
         report = InfoMessage(type(self).__name__,
                              self.duration,
-                             self.get_distance,
-                             self.get_mean_speed,
-                             self.get_spent_calories
+                             self.get_distance(),
+                             self.get_mean_speed(),
+                             self.get_spent_calories()
                              )
 
         return report.get_massage()
@@ -72,7 +72,7 @@ class Running(Training):
         coeff_calorie_2 = 20 
         duration_in_minutes = (self.duration * 60)
 
-        return ((coeff_calorie_1 * self.get_mean_speed - coeff_calorie_2) 
+        return ((coeff_calorie_1 * self.get_mean_speed() - coeff_calorie_2) 
                 * self.weight / self.M_IN_KM * duration_in_minutes)
 
 
@@ -95,7 +95,7 @@ class SportsWalking(Training):
         coeff_calorie_5 = 0.029
         duration_in_minutes = (self.duration * 60)
         return ((coeff_calorie_3 * self.weight 
-                + (self.get_mean_speed ** coeff_calorie_4 // self.height) 
+                + (self.get_mean_speed() ** coeff_calorie_4 // self.height) 
                 * coeff_calorie_5 * self.weight) * duration_in_minutes)
 
 class Swimming(Training):
@@ -122,7 +122,7 @@ class Swimming(Training):
         """Получить количество затраченных калорий."""
         coeff_calorie_6 = 1.1
         coeff_calorie_7 = 2
-        return (self.get_mean_speed + coeff_calorie_6) * coeff_calorie_7 *  self.weight
+        return (self.get_mean_speed() + coeff_calorie_6) * coeff_calorie_7 *  self.weight
 
 
 def read_package(workout_type: str, data: list) -> Training:
